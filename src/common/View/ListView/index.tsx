@@ -32,7 +32,7 @@ const useStyles = (theme: any) => createStyles({
 
 interface ExternalProps {
   id?: string,
-  title: string,
+  title: any,
   name: string,
   pluralName: string,
   content: any,

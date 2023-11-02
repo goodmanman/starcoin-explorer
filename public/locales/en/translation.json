@@ -9,6 +9,7 @@
     "tokens": "Tokens",
     "uncleblocks": "Uncle Blocks",
     "transactions": "Transactions",
+    "downLoad": "DownLoad",
     "pendingTransactions": "Pending Transactions",
     "addressTransactions": "Address Transactions",
     "events": "Events",

@@ -35,7 +35,7 @@ import { withRouter,RoutedProps } from '@/utils/withRouter';
 
 
 
-function formatArgsWithTypeTag(
+export function formatArgsWithTypeTag(
   deserializer: serde.Deserializer,
   typeTag: types.TypeTag,
 ): string | undefined {

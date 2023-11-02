@@ -1,10 +1,15 @@
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { getNetwork } from '@/utils/helper';
+import eventBus from '@/utils/eventBus';
+import Checkbox from '@mui/material/Checkbox';
 import { withStyles, createStyles } from '@mui/styles';
 import { encoding } from '@starcoin/starcoin';
 import CommonLink from '@/common/Link';
 import CommonTime from '@/common/Time';
+
+
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 const useStyles = (theme: any) =>
   createStyles({
@@ -59,6 +64,11 @@ interface Props extends ExternalProps, InternalProps {
 }
 
 class TransactionSummary extends PureComponent<Props> {
+  handleChange = (source: any, e: any) => {
+    source.checked = e.target.checked
+    eventBus.emit('seletRowBus', source)
+  }
+  
   render() {
     const { transaction, className, classes } = this.props;
     const isTransaction = !!transaction;
@@ -76,6 +86,7 @@ class TransactionSummary extends PureComponent<Props> {
     const type = Object.keys(txnPayload)[0];
     return (
       <div className={classNames(classes.root, className)}>
+        <Checkbox {...label}  onChange={(e) => this.handleChange(source, e)}/>
         {type}&nbsp;
         <CommonLink
           path={`/${getNetwork()}/transactions/detail/${
